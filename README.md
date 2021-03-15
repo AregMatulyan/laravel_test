@@ -8,8 +8,13 @@ Navigate via terminal to the app root folder and execute this command.
 > Important!
 >
 > The Laravel Test App has been developed using [Docker](https://docs.docker.com/get-docker/).
+> 
 >
-> Before proceeding make sure you have Docker installed.
+> Before proceeding make sure you have installed
+> * [Docker](https://docs.docker.com/get-docker/)
+> * [Composer](https://getcomposer.org/download/)
+> * PIXABAY_API_KEY is defined in the .env.example file
+> 
 
 ```
 ./scripts/install.sh
