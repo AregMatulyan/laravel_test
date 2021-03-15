@@ -1,0 +1,12 @@
+.card {
+    width: 19rem;
+}
+.card > img {
+    cursor: pointer;
+}
+.card:hover {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2)!important;
+}
+.modal-backdrop {
+    background-color: rgba(0,0,0,0.45);
+}

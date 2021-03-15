@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SavedImagesController;
+use App\Http\Controllers\SaveImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,4 @@ use App\Http\Controllers\SavedImagesController;
 
 Route::get('/', [HomeController::class, 'show']);
 Route::get('/saved', [SavedImagesController::class, 'show']);
+Route::post('/save', [SaveImageController::class, 'save']);
