@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\PixabayService;
 
 class HomeController extends Controller
 {
@@ -11,29 +12,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function show(Request $request)
     {
-        $images = [
-            [
-                'id' => 195893,
-                'userImageURL' => 'https://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg',
-            ],
-            [
-                'id' => 195894,
-                'userImageURL' => 'https://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg',
-            ],
-            [
-                'id' => 195895,
-                'userImageURL' => 'https://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg',
-            ],
-            [
-                'id' => 195896,
-                'userImageURL' => 'https://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg',
-            ],
+        $search = $request->input('search');
+        $pixabayService = new PixabayService();
+
+        $params = [
+            'q' => $search,
+            'tags' => $search,
         ];
 
+        $result = $pixabayService->getData($params);
+
         return view('images', [
-            'images' => $images
+            'isCache' => $result['isCache'],
+            'cacheExpiration' => $result['cacheExpiration'],
+            'hideSaveButton' => false,
+            'images' => $result['data']['hits'] ?: []
         ]);
     }
 }
